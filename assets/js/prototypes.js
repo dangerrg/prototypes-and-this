@@ -18,7 +18,11 @@ const comments = [
 // available to them.
 
 //Constructor function
+function Discussion() {
+  
+}
 
+let discussion = new Discussion('...');
 
 // This function builds all of the nodes needed for one comment in the Idea
 // page, then appends it to the bottom of the list containing the comments.
