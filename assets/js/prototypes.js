@@ -57,25 +57,25 @@ Discussion.prototype.renderComment = (message) => {
   document.querySelector('#comments ul').appendChild(comment);
 }
 
-let discussion = new Discussion('...');
 
 // This function sets the text for the comment count in two places.  The value
 // for the number of comments is hard-coded to 2.
 // Attach this function as a method of the Discussion prototype in task 2.
-let updateCommentCount = function() {
+Discussion.prototype.updateCommentCount = function() {
   var numberOfComments = 2 +' comments';
   document.querySelector('.goal__meta a').textContent = numberOfComments;
   document.querySelector('.comments__title span').textContent = numberOfComments;
 }
 
+let discussion = new Discussion('...'); //Instance of Discussion.
 
 // Initialization: creates two comments and sets the comment count.
 // For task 4, create a prototype that contains these three calls.
 for(i=0; i<comments.length;i++) {
-  discussion.renderComment(comments[i]);
+  discussion.renderComment(comments[i]); //Method discussion.
 }
 
-updateCommentCount();
+discussion.updateCommentCount(); //Method discussion.
 // End of initialization
 
 
