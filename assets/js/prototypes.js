@@ -22,12 +22,11 @@ function Discussion() {
   
 }
 
-let discussion = new Discussion('...');
 
 // This function builds all of the nodes needed for one comment in the Idea
 // page, then appends it to the bottom of the list containing the comments.
 // Attach this function as a method of the Discussion prototype in task 2.
-let renderComment = (message) => {
+Discussion.prototype.renderComment = (message) => {
   let commentParagraph = document.createElement('p');
   commentParagraph.textContent = message;
 
@@ -58,6 +57,8 @@ let renderComment = (message) => {
   document.querySelector('#comments ul').appendChild(comment);
 }
 
+let discussion = new Discussion('...');
+
 // This function sets the text for the comment count in two places.  The value
 // for the number of comments is hard-coded to 2.
 // Attach this function as a method of the Discussion prototype in task 2.
@@ -71,7 +72,7 @@ let updateCommentCount = function() {
 // Initialization: creates two comments and sets the comment count.
 // For task 4, create a prototype that contains these three calls.
 for(i=0; i<comments.length;i++) {
-  renderComment(comments[i]);
+  discussion.renderComment(comments[i]);
 }
 
 updateCommentCount();
