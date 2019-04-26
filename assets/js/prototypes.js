@@ -18,8 +18,8 @@ const comments = [
 // available to them.
 
 //Constructor function
-function Discussion() {
-  
+function Discussion(initialComments) {
+  this.comments = initialComments;
 }
 
 
@@ -70,15 +70,15 @@ Discussion.prototype.updateCommentCount = function() {
 Discussion.prototype.renderInitialComments = function() {
   // Initialization: creates two comments and sets the comment count.
   // For task 4, create a prototype that contains these three calls.
-  for (i = 0; i < comments.length; i++) {
-    this.renderComment(comments[i]); //Method discussion.
+  for (i = 0; i < this.comments.length; i++) {
+    this.renderComment(this.comments[i]); //Method discussion.
   }
 
   this.updateCommentCount(); //Method discussion.
   // End of initialization
 }
 
-let discussion = new Discussion(); //Instance of Discussion.
+let discussion = new Discussion(["I've done this and it's amazing!  I'll never forget it."]); //Instance of Discussion.
 discussion.renderInitialComments();
 
 
