@@ -67,18 +67,19 @@ Discussion.prototype.updateCommentCount = function() {
   document.querySelector('.comments__title span').textContent = numberOfComments;
 }
 
-let discussion = new Discussion('...'); //Instance of Discussion.
+Discussion.prototype.renderInitialComments = function() {
+  // Initialization: creates two comments and sets the comment count.
+  // For task 4, create a prototype that contains these three calls.
+  for (i = 0; i < comments.length; i++) {
+    this.renderComment(comments[i]); //Method discussion.
+  }
 
-// Initialization: creates two comments and sets the comment count.
-// For task 4, create a prototype that contains these three calls.
-for(i=0; i<comments.length;i++) {
-  discussion.renderComment(comments[i]); //Method discussion.
+  this.updateCommentCount(); //Method discussion.
+  // End of initialization
 }
 
-discussion.updateCommentCount(); //Method discussion.
-// End of initialization
-
-
+let discussion = new Discussion(); //Instance of Discussion.
+discussion.renderInitialComments();
 
 
 
