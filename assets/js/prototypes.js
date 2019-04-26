@@ -101,6 +101,7 @@ AddCommentForm.prototype.handleCommentSubmitted = function(e) {
   var message = this.takeAndClearMessage();
 
   // Task 4: render the comment using the Discussion prototype.
+  discussion.renderComment(message); //We use the parameter 'message' ref. line 31
 }
 
 new AddCommentForm();
