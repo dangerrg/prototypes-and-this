@@ -22,7 +22,6 @@ function Discussion(initialComments) {
   this.comments = initialComments;
 }
 
-
 // This function builds all of the nodes needed for one comment in the Idea
 // page, then appends it to the bottom of the list containing the comments.
 // Attach this function as a method of the Discussion prototype in task 2.
@@ -57,12 +56,11 @@ Discussion.prototype.renderComment = (message) => {
   document.querySelector('#comments ul').appendChild(comment);
 }
 
-
 // This function sets the text for the comment count in two places.  The value
 // for the number of comments is hard-coded to 2.
 // Attach this function as a method of the Discussion prototype in task 2.
 Discussion.prototype.updateCommentCount = function() {
-  var numberOfComments = 2 +' comments';
+  var numberOfComments = this.comments.length +' comments';
   document.querySelector('.goal__meta a').textContent = numberOfComments;
   document.querySelector('.comments__title span').textContent = numberOfComments;
 }
@@ -76,6 +74,12 @@ Discussion.prototype.renderInitialComments = function() {
 
   this.updateCommentCount(); //Method discussion.
   // End of initialization
+}
+
+Discussion.prototype.addComment = function (newComment) {
+  this.comments.push(newComment);
+  this.renderComment(newComment);
+  this.updateCommentCount();
 }
 
 let discussion = new Discussion(["I've done this and it's amazing!  I'll never forget it."]); //Instance of Discussion.
@@ -102,7 +106,7 @@ AddCommentForm.prototype.handleCommentSubmitted = function(e) {
   var message = this.takeAndClearMessage();
 
   // Task 4: render the comment using the Discussion prototype.
-  discussion.renderComment(message); //We use the parameter 'message' ref. line 31
+  discussion.addComment(message); //We use the parameter 'message' ref. line 31
 }
 
 new AddCommentForm();
